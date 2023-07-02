@@ -1,6 +1,7 @@
 import { FC, useEffect } from 'react';
 import { useWallet, useConnection } from '@solana/wallet-adapter-react';
 import { Nft } from '../../components/nft/Nft';
+import Tip from '../../components/transactions/Tip';
 import useUserSOLBalanceStore from '../../stores/useUserSOLBalanceStore';
 
 export const HomeView: FC = () => {
@@ -27,10 +28,11 @@ export const HomeView: FC = () => {
             <Nft />
             <h4 className="md:w-full text-2xl text-slate-300 my-2">
               <div className="flex flex-row justify-center">
-                <div>{(balance || 0).toLocaleString()}</div>
+                <div>{'Current balance: ' +(balance || 0).toLocaleString()}</div>
                 <div className="text-slate-600 ml-2">SOL</div>
               </div>
             </h4>
+            <Tip />
           </div>
         )}
       </div>
