@@ -2,14 +2,11 @@ import { FC, useState } from 'react';
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
 import {
     SystemProgram,
-    Connection,
-    Keypair,
     PublicKey,
-    Signer,
-    TransactionInstruction,
     TransactionMessage,
     VersionedTransaction,
-} from "@solana/web3.js";import { notify } from "../../utils/notifications";
+} from "@solana/web3.js";
+import { notify } from "utils/notifications";
 
 const Tip: FC = () => {
   const { connection } = useConnection();
@@ -23,7 +20,6 @@ const Tip: FC = () => {
     }
 
     try {
-     console.log(publicKey)
       const lamports = Math.round(tipAmount * 1_000_000_000); // Convert SOL to lamports
       const recipientAddress = '2KpZh4GnpgKKuXkTdrdgDiUhmr86udo8jSPN6dRLWkYn';
 

@@ -71,3 +71,20 @@
   color: #666;
   cursor: not-allowed;
 }
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .tip-container {
+    padding: 10px;
+  }
+
+  .tip-input {
+    width: 150px;
+  }
+
+  .button-container button {
+    width: 60px;
+    height: 30px;
+    font-size: 12px;
+  }
+}
