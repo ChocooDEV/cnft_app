@@ -12,7 +12,6 @@ export const HomeView: FC = () => {
 
   useEffect(() => {
     if (wallet.publicKey) {
-      console.log(wallet.publicKey.toBase58());
       getUserSOLBalance(wallet.publicKey, connection);
     }
   }, [wallet.publicKey, connection, getUserSOLBalance]);
@@ -21,7 +20,7 @@ export const HomeView: FC = () => {
     <div className="md:hero mx-auto p-4">
       <div className="md:hero-content flex flex-col w-full">
         <h1 className="text-center text-5xl md:pl-12 font-bold text-transparent bg-clip-text bg-gradient-to-br from-indigo-500 to-fuchsia-500 mb-4">
-          Send cNFTs
+         Chocoo's Lab
         </h1>
         {wallet.connected && (
           <div className="flex flex-col mt-2 testWidth">
