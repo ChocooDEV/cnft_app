@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
 import Card from "./Card";
+import Transfer from "./Transfer";
 
 const url = `https://mainnet.helius-rpc.com/?api-key=b941213c-6a24-44da-b1ec-5dda9ab09e4d`
 const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
@@ -30,7 +31,7 @@ const searchAssets = async (ownerAddress: string) => {
     },
     body: JSON.stringify({
       jsonrpc: "2.0",
-      id: "my-id",
+      id: "chocoo1",
       method: "searchAssets",
       params: {
         ownerAddress,
@@ -40,6 +41,7 @@ const searchAssets = async (ownerAddress: string) => {
   });
 
   const { result } = await response.json();
+
   const groupedResults: {
     id: string;
     assets: { id: string; name: string; json_uri: string }[];
@@ -50,17 +52,18 @@ const searchAssets = async (ownerAddress: string) => {
       id: result.items[i].id,
       name: result.items[i].content.metadata.name,
       json_uri: result.items[i].content.json_uri,
+      ownership: result.items[i].ownership,
+      compression: result.items[i].compression,
       compressed: result.items[i].compression.compressed,
       attributes: result.items[i].content?.metadata?.attributes?.map(
         ({ traitType, trait_type, value }) => ({
           traitType: traitType || trait_type,
           value,
         })
-      ) || []
+      ) || [],
     };
 
     const existingGroup = groupedResults.find((group) => group.id === asset.id);
-
     if (existingGroup) {
       existingGroup.assets.push(asset);
     } else {
@@ -118,11 +121,17 @@ export const Nft = () => {
   const handleCardClick = (cardId: string) => {
     setSelectedCardId(cardId === selectedCardId ? null : cardId);
   };
+  
+  const selectedCard = data.assets
+    .flatMap((group: any) => group.assets)
+    .find((nft: any) => nft.id === selectedCardId);
 
   return (
     <div className="p-4">
-      <h1>gm! {data.owner} Here are your NFTs</h1>
-      <div className="card-grid">
+        <h1 className="text-center text-3xl md:pl-12 font-bold text-transparent bg-clip-text bg-gradient-to-br from-indigo-500 to-fuchsia-500 mb-4">
+          cNFTs of <span className="text-white">{data.owner}</span>
+        </h1>
+        <div className="card-grid">
         {data.assets.map((group: any) =>
           group.assets.map((nft: any) => (
             <div
@@ -135,6 +144,7 @@ export const Nft = () => {
           ))
         )}
       </div>
+      <Transfer selectedCard={selectedCard}/>
     </div>
   );
 };
