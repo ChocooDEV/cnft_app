@@ -1,4 +1,5 @@
 import axios from "axios";
+require('dotenv').config();
 
 const HELIUS_RPC = "https://mainnet.helius-rpc.com/?api-key=b941213c-6a24-44da-b1ec-5dda9ab09e4d";
 
@@ -31,7 +32,7 @@ export async function getAssetProof(assetId: any, rpcUrl = HELIUS_RPC): Promise<
       const response = await axiosInstance.post(rpcUrl, {
         jsonrpc: "2.0",
         method: "getAssetProof",
-        id: "my-id",
+        id: "chocoo1",
         params: {
           id: assetId
         },
