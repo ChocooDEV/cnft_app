@@ -1,7 +1,7 @@
 import axios from "axios";
 require('dotenv').config();
 
-const HELIUS_RPC = "https://mainnet.helius-rpc.com/?api-key=b941213c-6a24-44da-b1ec-5dda9ab09e4d";
+const HELIUS_RPC = "@ YOUR API";
 
 export async function getAsset(assetId: any, rpcUrl = HELIUS_RPC): Promise<any> {
     try {

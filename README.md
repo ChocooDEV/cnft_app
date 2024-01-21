@@ -14,6 +14,9 @@ Contributions are always welcome! Feel free to do some pull requests !
 Pay attention to set the Helius url in :
  - src\components\nft\Nft.tsx 
  - src\utils\readApi.tsx
+   
+Pay attention to update the tipping address in :
+ - src\components\transactions\Tip.tsx
 
 ```bash
   git clone https://github.com/ChocooDEV/cnft_app.git
