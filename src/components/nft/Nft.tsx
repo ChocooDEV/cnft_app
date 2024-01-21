@@ -3,7 +3,7 @@ import { useWallet } from "@solana/wallet-adapter-react";
 import Card from "./Card";
 import Transfer from "./Transfer";
 
-const url = `https://mainnet.helius-rpc.com/?api-key=b941213c-6a24-44da-b1ec-5dda9ab09e4d`
+const url = `@YOUR API KEY`
 const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
 
 const getMetadata = async (mintAccounts: string[]) => {
